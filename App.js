@@ -4,7 +4,7 @@ import { colors } from "./src/theme/colors";
 import { spacing } from "./src/theme/spacing";
 import { useFonts } from "expo-font";
 import { typography } from "./src/theme/typography";
-import { DarkTheme, NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./src/screens/home";
 import Text from "./src/components/text/text";
@@ -23,25 +23,13 @@ export default function App() {
   }
 
   return (
-    // <View style={styles.container}>
-    //   <Text preset="h1" style={{ color: colors.white }}>This is planet app</Text>
-    //   <Text preset="small" style={{ marginTop: spacing[4] }}>Hello world</Text>
-    //   <StatusBar style="auto" />
-    // </View>
-
-    <NavigationContainer theme={DarkTheme}>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Home" component={Home} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Home" component={Home} />
+        </Stack.Navigator>
+      </NavigationContainer>
+      <StatusBar style="light" />
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // backgroundColor: colors.black,
-    // alignItems: "center",
-    // justifyContent: "center",
-  },
-});
