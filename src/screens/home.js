@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { FlatList, Pressable, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import PlanetHeader from "../components/planet-header";
 import Text from "../components/text/text";
@@ -8,7 +8,7 @@ import { colors } from "../theme/colors";
 import { spacing } from "../theme/spacing";
 import { AntDesign } from "@expo/vector-icons";
 
-export default function Home() {
+export default function Home({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <PlanetHeader />
@@ -18,7 +18,12 @@ export default function Home() {
         keyExtractor={(item) => item.name}
         renderItem={({ item }) => {
           return (
-            <View style={styles.item}>
+            <Pressable
+              onPress={() => {
+                navigation.navigate("Details");
+              }}
+              style={styles.item}
+            >
               <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <View
                   style={[styles.circle, { backgroundColor: item.color }]}
@@ -28,7 +33,7 @@ export default function Home() {
                 </Text>
               </View>
               <AntDesign name="right" size={14} color="white" />
-            </View>
+            </Pressable>
           );
         }}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
