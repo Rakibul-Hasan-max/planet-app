@@ -1,5 +1,5 @@
 import React from "react";
-import { Pressable, ScrollView, StyleSheet, View } from "react-native";
+import { Linking, Pressable, ScrollView, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import PlanetHeader from "../components/planet-header";
 import Text from "../components/text/text";
@@ -20,8 +20,15 @@ const PlanetSection = ({ title, value }) => {
 export default function Details({ navigation, route }) {
   const planet = route.params.planet;
 
-  const { name, description, avgTemp, radius, revolutionTime, rotationTime } =
-    planet;
+  const {
+    name,
+    description,
+    avgTemp,
+    radius,
+    revolutionTime,
+    rotationTime,
+    wikiLink,
+  } = planet;
 
   // const renderImage = (name) => {
   //   switch (name) {
@@ -44,6 +51,10 @@ export default function Details({ navigation, route }) {
   //   }
   // };
 
+  const onPressLink = () => {
+    Linking.openURL(wikiLink);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <PlanetHeader backBtn={true} />
@@ -57,7 +68,7 @@ export default function Details({ navigation, route }) {
 
           <Text style={styles.description}>{description}</Text>
 
-          <Pressable style={styles.source}>
+          <Pressable onPress={onPressLink} style={styles.source}>
             <Text>Source:</Text>
             <Text preset="h4" style={styles.wiki}>
               Wikipedia

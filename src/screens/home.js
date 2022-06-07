@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, Pressable, StyleSheet, View } from "react-native";
+import { FlatList, Pressable, StyleSheet, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import PlanetHeader from "../components/planet-header";
 import Text from "../components/text/text";
@@ -8,6 +8,7 @@ import { colors } from "../theme/colors";
 import { spacing } from "../theme/spacing";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/core";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const PlanetItem = ({ item }) => {
   const { name, color } = item;
@@ -38,6 +39,14 @@ export default function Home({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <PlanetHeader />
+
+      <TextInput
+        placeholder="Type the planet name"
+        placeholderTextColor={Colors.white}
+        autoCorrect={false}
+        style={styles.searchInput}
+      />
+
       <FlatList
         contentContainerStyle={styles.list}
         data={PLANET_LIST}
@@ -75,5 +84,11 @@ const styles = StyleSheet.create({
   separator: {
     borderWidth: 0.3,
     borderBottomColor: colors.grey,
+  },
+  searchInput: {
+    padding: spacing[3],
+    borderBottomColor: colors.grey,
+    borderBottomWidth: 1,
+    margin: spacing[5],
   },
 });
