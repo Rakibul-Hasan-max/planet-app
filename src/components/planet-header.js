@@ -17,7 +17,7 @@ export default function PlanetHeader({ backBtn, title = "THE PLANETS" }) {
             navigation.goBack();
           }}
         >
-          <AntDesign name="left" size={22} color="white" />
+          <AntDesign name="left" size={24} color="white" />
         </Pressable>
       )}
       <Text preset="h2">{title}</Text>

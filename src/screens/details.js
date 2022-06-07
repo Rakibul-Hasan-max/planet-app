@@ -5,7 +5,9 @@ import PlanetHeader from "../components/planet-header";
 import Text from "../components/text/text";
 import { colors } from "../theme/colors";
 
-export default function Details({ navigation }) {
+export default function Details({ navigation, route }) {
+  const planet = route.params.planet;
+  console.log("planet show", planet);
   return (
     <SafeAreaView style={styles.container}>
       <PlanetHeader backBtn={true} />
