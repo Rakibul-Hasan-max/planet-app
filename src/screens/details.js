@@ -5,6 +5,16 @@ import PlanetHeader from "../components/planet-header";
 import Text from "../components/text/text";
 import { colors } from "../theme/colors";
 import { spacing } from "../theme/spacing";
+import {
+  MercurySvg,
+  EarthSvg,
+  JupiterSvg,
+  MarsSvg,
+  NeptuneSvg,
+  SaturnSvg,
+  UranusSvg,
+  VenusSvg,
+} from "../svg";
 
 const PlanetSection = ({ title, value }) => {
   return (
@@ -30,26 +40,26 @@ export default function Details({ navigation, route }) {
     wikiLink,
   } = planet;
 
-  // const renderImage = (name) => {
-  //   switch (name) {
-  //     case "mercury":
-  //       return <MercurySvg />;
-  //     case "mercury":
-  //       return <MercurySvg />;
-  //     case "mercury":
-  //       return <MercurySvg />;
-  //     case "mercury":
-  //       return <MercurySvg />;
-  //     case "mercury":
-  //       return <MercurySvg />;
-  //     case "mercury":
-  //       return <MercurySvg />;
-  //     case "mercury":
-  //       return <MercurySvg />;
-  //     case "mercury":
-  //       return <MercurySvg />;
-  //   }
-  // };
+  const renderImage = (name) => {
+    switch (name) {
+      case "mercury":
+        return <MercurySvg />;
+      case "earth":
+        return <EarthSvg />;
+      case "jupiter":
+        return <JupiterSvg />;
+      case "mars":
+        return <MarsSvg />;
+      case "neptune":
+        return <NeptuneSvg />;
+      case "saturn":
+        return <SaturnSvg />;
+      case "uranus":
+        return <UranusSvg />;
+      case "venus":
+        return <VenusSvg />;
+    }
+  };
 
   const onPressLink = () => {
     Linking.openURL(wikiLink);
@@ -59,7 +69,7 @@ export default function Details({ navigation, route }) {
     <SafeAreaView style={styles.container}>
       <PlanetHeader backBtn={true} />
       <ScrollView>
-        {/* <View style={styles.imageView}>{renderImage(name)}</View> */}
+        <View style={styles.imageView}>{renderImage(name)}</View>
 
         <View style={styles.detailsView}>
           <Text preset="h1" style={{ textTransform: "uppercase" }}>
